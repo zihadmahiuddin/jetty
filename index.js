@@ -49,7 +49,20 @@ codes = [
   {name: "hide",        code:"?25l"},
   {name: "show",        code:"?25h"},
   {name: "sgr",         code:"m"},
+      
 ];
+// codes array
+ moveUp: (n: number | number[]) => void;
+ moveDown: (n: number | number[]) => void;
+ moveLeft: (n: number | number[]) => void;
+ moveRight: (n: number | number[]) => void;
+ lineUp: (n: number | number[]) => void;
+ lineDown: (n: number | number[]) => void;
+ save: (n: number | number[]) => void;
+ restore: (n: number | number[]) => void;
+ hide: (n: number | number[]) => void;
+ show: (n: number | number[]) => void;
+ sgr: (n: number | number[]) => void;
 
 codes.map(function(code) {
   Jetty.prototype[code.name] = function(n) {
@@ -59,23 +72,23 @@ codes.map(function(code) {
 });
 
 var sgrCodes = [
-  {name: "reset",                   code: 0 },
-  {name: "bold",                    code: 1 },
-  {name: "faint",                   code: 2 },
-  {name: "italic",                  code: 3 },
-  {name: "underline",               code: 4 },
-  {name: "blink",                   code: 5 },
-  {name: "blinkRapid",              code: 6 },
-  {name: "imageNegative",           code: 7 },
+  {name: "reset",                   code: 0 }, 
+  {name: "bold",                    code: 1 },   
+  {name: "faint",                   code: 2 },   
+  {name: "italic",                  code: 3 },   
+  {name: "underline",               code: 4 }, 
+  {name: "blink",                   code: 5 },   
+  {name: "blinkRapid",              code: 6 },   
+  {name: "imageNegative",           code: 7 },   
   {name: "conceal",                 code: 8 },
   {name: "strikeout",               code: 9 },
   {name: "font",                    code: function(n) { return [10 + (Number(n)||0)];   }},
-  {name: "boldOff",                 code: 21},
+  {name: "boldOff",                 code: 21},    
   {name: "normal",                  code: 22},
-  {name: "italicOff",               code: 23},
-  {name: "underlineOff",            code: 24},
-  {name: "blinkOff",                code: 25},
-  {name: "imagePositive",           code: 27},
+  {name: "italicOff",               code: 23},      
+  {name: "underlineOff",            code: 24},    
+  {name: "blinkOff",                code: 25},     
+  {name: "imagePositive",           code: 27},  
   {name: "reveal",                  code: 28},
   {name: "strikeoutOff",            code: 29},
   {name: "legacyColour",            code: function(n)   { return [30 + (Number(n)||0)]; }},
@@ -83,13 +96,38 @@ var sgrCodes = [
   {name: "defaultColour",           code: 39},
   {name: "legacyBackgroundColour",  code: function(n)   { return [40 + (Number(n)||0)]; }},
   {name: "backgroundColour",        code: function(dec) { return [48, 5, dec];          }},
-  {name: "defaultBackgroundColour", code: 49},
-  {name: "frame",                   code: 51},
-  {name: "encircle",                code: 52},
-  {name: "overline",                code: 53},
-  {name: "frameOff",                code: 54},
+  {name: "defaultBackgroundColour", code: 49},    
+  {name: "frame",                   code: 51},    
+  {name: "encircle",                code: 52},     
+  {name: "overline",                code: 53},    
+  {name: "frameOff",                code: 54},      
   {name: "overlineOff",             code: 55}
 ];
+// sgrCodes array
+reset: (n: number) => void;
+bold: (n: number) => void;
+faint: (n: number) => void;
+italic: (n: number) => void;
+underline: (n: number) => void;
+blink: (n: number) => void;
+binkRapid: (n: number) => void;
+imageNegative: (n: number) => void;
+conceal: (n: number) => void;
+strikeout: (n: number) => void;
+boldOff: (n: number) => void;
+normal: (n: number) => void;
+italicOff: (n: number) => void;
+underlineOff: (n: number) => void;
+blinkOff: (n: number) => void;
+imagePositive: (n: number) => void;
+reveal: (n: number) => void;
+strikeoutOff: (n: number) => void;
+defaultColour: (n: number) => void;
+defaultBackgroundColour: (n: number) => void;
+frame: (n: number) => void;
+encircle: (n: number) => void;
+overline: (n: number) => void;
+frameOff: (n: number) => void;
 
 sgrCodes.map(function(code) {
   Jetty.prototype[code.name] = function(n) {
