@@ -5,52 +5,60 @@
 // Definitions: https://github.com/zihadmahiuddin/jetty
 declare module "jetty" {
   export type StyleFunction = (str: string) => void;
+  import stream from "stream";
 
-  export default class Jetty {
-    constructor(stream: NodeJS.WriteStream);
-    _read: (n: any) => void;
-    seq: (char: string, args: any[]) => void;
-    text: (str: string, styleFn?: StyleFunction) => void;
-    erase: (n: number, styleFn: StyleFunction) => void;
-    rgb: (channels: number[] | number, isBg: boolean) => void;
-    nuke: () => void;
-    clear: () => void;
+  export default class Jetty extends stream.Readable {
+    constructor(stream: stream.Writable);
+    _read: (n?: any) => void;
+    seq: (char?: string, args?: any[]) => Jetty;
+    text: (str?: string, styleFn?: StyleFunction) => Jetty;
+    erase: (n?: number, styleFn?: StyleFunction) => Jetty;
+    rgb: (channels?: number[] | number, isBg?: boolean) => Jetty;
+    nuke: () => Jetty;
 
-    moveUp: (n: number | number[]) => void;
-    moveDown: (n: number | number[]) => void;
-    moveLeft: (n: number | number[]) => void;
-    moveRight: (n: number | number[]) => void;
-    lineUp: (n: number | number[]) => void;
-    lineDown: (n: number | number[]) => void;
-    save: (n: number | number[]) => void;
-    restore: (n: number | number[]) => void;
-    hide: (n: number | number[]) => void;
-    show: (n: number | number[]) => void;
-    sgr: (n: number | number[]) => void;
+    moveUp: (n?: number | number[]) => Jetty;
+    moveDown: (n?: number | number[]) => Jetty;
+    moveLeft: (n?: number | number[]) => Jetty;
+    moveRight: (n?: number | number[]) => Jetty;
+    lineUp: (n?: number | number[]) => Jetty;
+    lineDown: (n?: number | number[]) => Jetty;
+    moveTo: (n?: number | number[]) => Jetty;
+    clear: (n?: number | number[]) => Jetty;
+    clearLine: (n?: number | number[]) => Jetty;
+    save: (n?: number | number[]) => Jetty;
+    restore: (n?: number | number[]) => Jetty;
+    hide: (n?: number | number[]) => Jetty;
+    show: (n?: number | number[]) => Jetty;
+    sgr: (n?: number | number[]) => Jetty;
 
-    reset: (n: number) => void;
-    bold: (n: number) => void;
-    faint: (n: number) => void;
-    italic: (n: number) => void;
-    underline: (n: number) => void;
-    blink: (n: number) => void;
-    binkRapid: (n: number) => void;
-    imageNegative: (n: number) => void;
-    conceal: (n: number) => void;
-    strikeout: (n: number) => void;
-    boldOff: (n: number) => void;
-    normal: (n: number) => void;
-    italicOff: (n: number) => void;
-    underlineOff: (n: number) => void;
-    blinkOff: (n: number) => void;
-    imagePositive: (n: number) => void;
-    reveal: (n: number) => void;
-    strikeoutOff: (n: number) => void;
-    defaultColour: (n: number) => void;
-    defaultBackgroundColour: (n: number) => void;
-    frame: (n: number) => void;
-    encircle: (n: number) => void;
-    overline: (n: number) => void;
-    frameOff: (n: number) => void;
+    reset: (n?: number) => Jetty;
+    bold: (n?: number) => Jetty;
+    faint: (n?: number) => Jetty;
+    italic: (n?: number) => Jetty;
+    underline: (n?: number) => Jetty;
+    blink: (n?: number) => Jetty;
+    binkRapid: (n?: number) => Jetty;
+    imageNegative: (n?: number) => Jetty;
+    conceal: (n?: number) => Jetty;
+    strikeout: (n?: number) => Jetty;
+    font: (n?: number) => Jetty;
+    boldOff: (n?: number) => Jetty;
+    normal: (n?: number) => Jetty;
+    italicOff: (n?: number) => Jetty;
+    underlineOff: (n?: number) => Jetty;
+    blinkOff: (n?: number) => Jetty;
+    imagePositive: (n?: number) => Jetty;
+    reveal: (n?: number) => Jetty;
+    strikeoutOff: (n?: number) => Jetty;
+    legacyColour: (n?: number) => Jetty;
+    colour: (n?: number) => Jetty;
+    defaultColour: (n?: number) => Jetty;
+    legacyBackgroundColour: (n?: number) => Jetty;
+    backgroundColour: (n?: number) => Jetty;
+    defaultBackgroundColour: (n?: number) => Jetty;
+    frame: (n?: number) => Jetty;
+    encircle: (n?: number) => Jetty;
+    overline: (n?: number) => Jetty;
+    frameOff: (n?: number) => Jetty;
   }
 }
